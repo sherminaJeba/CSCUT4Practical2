@@ -12,23 +12,65 @@ import java.lang.Number;
  */
 public class FilesInOut {
 
-    public static void main(String[] args) {
-        // Replace this with statements to set the file name (input) and file name (output).
-        // Initially it will be easier to hardcode suitable file names.
+    public static void main(String[] args) throws Exception{
+    	Scanner console = new Scanner(System.in);
+        System.out.println("input file: ");
+        String inputFile = console.next();
+        System.out.println("output file : ");
+        String outputFileName = console.next();
+        
+        File inputFileN = new File(inputFile);
+        
+       Scanner in = new Scanner(inputFileN);
+      PrintWriter out = new PrintWriter(outputFileName);  
+      
+      
+      while (in.hasNextLine())
+     {
+           String Line = in.nextLine();
+         
+        // out.println(Line);
+         
+      // System.out.println("output  file ");
+        StringTokenizer st;
+       st = new StringTokenizer(Line);
+       
+       
+       while (st.hasMoreTokens()) {
+            String Word1 =st.nextToken();
+            String Word2 =st.nextToken();
+            String Word3 =st.nextToken();
+   
+              String W11 =Word1.substring(0,1);
+             String W12 =W11.toUpperCase();
+             String W13 =Word1.substring(1);
+            
+             String W1 =W12+W13;
+             
+             
+             String W21 =Word2.substring(0,1);
+             String W22 =W21.toUpperCase();
+            
+             String W23 =Word2.substring(1);
+            String W2 =W22+W23;
+            
+            String W31 =Word3.substring(0,2);
+            String W32 =Word3.substring(2,4);
+            String W33 =Word3.substring(4);
+           String W3 = W31+"/"+W32+"/"+W33+"\n";
+           out.print(W1+" "+W2+" "+W3);
+           //System.out.printf("-%8s-%8s%10s\n",W1,W2,W3);
+           out.println("\n");
 
-        // Set up a new Scanner to read the input file.
-        // Processing line by line would be sensible here.
-        // Initially, echo the text to System.out to check you are reading correctly.
-        // Then add code to modify the text to the output format.
 
-        // Set up a new PrintWriter to write the output file.
-        // Add suitable code into the above processing (because you need to do this line by line also.
-        // That is, read a line, write a line, loop.
+    }
+       
+     
+            
+        }
+      in.close();
+      out.close(); 
+    
+}
+}
 
-        // Finally, add code to read the filenames as arguments from the command line.
-
-        System.out.println("You need to add your own code to do anything");
-
-    } // main
-
-} // FilesInOut
